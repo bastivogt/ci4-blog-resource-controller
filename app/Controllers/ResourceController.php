@@ -6,27 +6,28 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 
 use CodeIgniter\Exceptions\PageNotFoundException;
+use CodeIgniter\Model;
+
 
 class ResourceController extends BaseController
 {
 
-    protected $modelClass;
-    protected $model;
-    protected $viewPath = "";
-    protected $views = [
+    protected string $modelClass;
+    protected Model $model;
+    protected array $views = [
             "index" => "index",
             "show" => "show",
             "new" => "new",
             "edit" => "edit",
             "delete_confirm" => "delete_confirm"
     ];
-    protected $entity;
-    protected $indexController;
-    protected $showController;
-    protected $createMessage = "Object successfully created!";
-    protected $nothingChangedMessage = "Nothing has changed!";
-    protected $updateSuccessMessage = "Object successfully updated!";
-    protected $deleteMessage = "Object successfully deleted!";
+    protected string $entity;
+    protected string $indexController;
+    protected string $showController;
+    protected string $createMessage = "Object successfully created!";
+    protected string $nothingChangedMessage = "Nothing has changed!";
+    protected string $updateSuccessMessage = "Object successfully updated!";
+    protected string $deleteMessage = "Object successfully deleted!";
 
     public function __construct() {
         $this->model = new $this->modelClass();
@@ -42,17 +43,22 @@ class ResourceController extends BaseController
         return $object;
     }
 
+    protected function getObjects() {
+        return $this->model->orderBy("id", "desc")->findAll();
+    }
+
 
     public function index()
     {
-        $objects = $this->model->findAll();
+        $objects = $this->getObjects();
         return view($this->views["index"], [
             "objects" => $objects
         ]);
     }
 
 
-    public function show($id) {
+    public function show($id)
+    {
         $object = $this->getObjectOr404($id);
         return view($this->views["show"], [
             "object" => $object
@@ -69,7 +75,8 @@ class ResourceController extends BaseController
     }
 
 
-    public function create() {
+    public function create()
+    {
         $entity = new $this->entity($this->request->getPost());
         $id = $this->model->insert($entity);
 
@@ -83,7 +90,8 @@ class ResourceController extends BaseController
     }
 
 
-    public function edit($id) {
+    public function edit($id) 
+    {
         $object = $this->getObjectOr404($id);
         helper("form");
         return view($this->views["edit"], [
@@ -93,7 +101,8 @@ class ResourceController extends BaseController
     }
 
 
-    public function update($id) {
+    public function update($id)
+    {
         $object = $this->getObjectOr404($id);
         $object->fill($this->request->getPost());
 
@@ -115,7 +124,8 @@ class ResourceController extends BaseController
 
 
 
-    public function deleteConfirm($id) {
+    public function deleteConfirm($id)
+    {
         $object = $this->getObjectOr404($id);
         helper("form");
         return view($this->views["delete_confirm"], [

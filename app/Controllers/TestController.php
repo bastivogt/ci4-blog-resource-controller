@@ -11,13 +11,12 @@ use App\Models\PostModel;
 class TestController extends ResourceController
 {
 
-    protected $modelClass = \App\Models\PostModel::class;
-    protected $viewPath = "Test/";
-    protected $entity = \App\Entities\PostEntity::class;
-    protected $indexController = "TestController::index";
-    protected $showController = "TestController::show";
-    protected $createMessage = "Post successfully created!";
-    protected $views = [
+    protected string $modelClass = \App\Models\PostModel::class;
+    protected string $entity = \App\Entities\PostEntity::class;
+    protected string $indexController = "TestController::index";
+    protected string $showController = "TestController::show";
+    protected string $createMessage = "Post successfully created!";
+    protected array $views = [
         "index" => "Test/index",
         "show" => "Test/show",
         "new" => "Test/new",
