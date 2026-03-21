@@ -7,5 +7,14 @@
     <textarea name="content" id="content"><?php echo old("content", esc($object->content)); ?></textarea>
 </div>
 <div>
+    <label for="published">Published</label>
+    <?php echo form_checkbox([
+        "name" => "published",
+        "id" => "published",
+        "value" => "1",
+        "checked" => boolval($object->published)
+    ]); ?>
+</div>
+<div>
     <button>Save</button>
 </div>

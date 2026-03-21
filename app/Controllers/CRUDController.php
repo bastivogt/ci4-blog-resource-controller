@@ -36,7 +36,7 @@ class CRUDController extends BaseController
 
 
     protected function getObjectOr404($id) {
-        $object = $this->model->find($id);
+        $object = $this->getObject($id);
         if(!$object) {
             PageNotFoundException::forPageNotFound("Object id: $id does not exist!");
         }
@@ -45,6 +45,10 @@ class CRUDController extends BaseController
 
     protected function getObjects() {
         return $this->model->orderBy("id", "desc")->findAll();
+    }
+
+    protected function getObject($id) {
+        return $this->model->find($id);
     }
 
 

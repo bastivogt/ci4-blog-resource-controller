@@ -19,7 +19,7 @@
 
     <?php echo form_open(url_to("TestController::create")); ?>
         <?php echo $this->include("Test/form"); ?>
-    </form>
+    <?php echo form_close(); ?>
     <hr>
     <p>
         <a href="<?php echo previous_url(); ?>">Back</a>

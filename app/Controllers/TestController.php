@@ -24,4 +24,12 @@ class TestController extends CRUDController
         "delete_confirm" => "Test/delete_confirm"
     ];
 
+    protected function getObjects() {
+        return $this->model->where("published", true)->findAll();
+    }
+
+    protected function getObject($id) {
+        return $this->model->where("published", true)->find($id);
+    }
+
 }

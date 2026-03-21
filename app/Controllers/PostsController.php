@@ -52,6 +52,7 @@ class PostsController extends BaseController
 
     public function create() {
         $post = new PostEntity($this->request->getPost());
+        //dd($post);
         $id = $this->postModel->insert($post);
   
         if(!$id) {
@@ -60,6 +61,7 @@ class PostsController extends BaseController
                 ->with("errors", $this->postModel->errors())
                 ->withInput();
         }
+    
         return redirect()->to(url_to("PostsController::index"))
             ->with("message", "Post created");
     }
@@ -76,6 +78,7 @@ class PostsController extends BaseController
 
     public function edit($id) {
         $post = $this->getPostOr404($id);
+        //dd(boolval($post->published));
         helper("form");
         return view("Posts/edit", [
             "title" => $post->title,
