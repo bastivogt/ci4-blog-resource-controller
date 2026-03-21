@@ -9,7 +9,7 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\Model;
 
 
-class ResourceController extends BaseController
+class CRUDController extends BaseController
 {
 
     protected string $modelClass;

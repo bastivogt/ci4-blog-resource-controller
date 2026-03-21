@@ -5,10 +5,10 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 
-use App\Controllers\ResourceController;
+use App\Controllers\CRUDController;
 use App\Models\PostModel;
 
-class TestController extends ResourceController
+class TestController extends CRUDController
 {
 
     protected string $modelClass = \App\Models\PostModel::class;
