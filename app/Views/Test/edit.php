@@ -33,8 +33,7 @@
     <script>
         const cb = document.getElementById("published");
         cb.addEventListener("change", (e) => {
-            if(e.target.getAttribute("checked") === "1") {
-                //e.target.removeAttribute("checked");
+            if(e.target.getAttribute("checked") === "") {
                 e.target.removeAttribute("checked");
             }else {
                 e.target.setAttribute("checked", "");
@@ -47,8 +46,8 @@
         console.log("form");
         form.addEventListener("submit", (e) => {
             e.preventDefault();
-            console.log("submit");
-            console.log("cb value", cb.value)
+            // console.log("submit");
+            // console.log("cb value", cb.value)
             e.target.submit();
         });
     </script>
