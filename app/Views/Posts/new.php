@@ -17,7 +17,7 @@
         </ul>
     <?php endif; ?>
 
-    <?php echo form_open(url_to("PostsController::create")); ?>
+    <?php echo form_open(url_to("PostsController::store")); ?>
         <?php echo $this->include("Posts/form"); ?>
     </form>
     <hr>

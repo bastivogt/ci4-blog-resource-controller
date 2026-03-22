@@ -37,8 +37,10 @@ class CRUDController extends BaseController
 
     protected function getObjectOr404($id) {
         $object = $this->getObject($id);
+        //dd($object);
+        // $object === null
         if(!$object) {
-            PageNotFoundException::forPageNotFound("Object id: $id does not exist!");
+            throw PageNotFoundException::forPageNotFound("Object id: $id does not exist!");
         }
         return $object;
     }
@@ -79,14 +81,14 @@ class CRUDController extends BaseController
     }
 
 
-    public function create()
+    public function store()
     {
         $entity = new $this->entity($this->request->getPost());
         $id = $this->model->insert($entity);
 
         if(!$id) {
             return redirect()->back()
-                ->withErrors("errors", $this->model->errors())
+                ->with("errors", $this->model->errors())
                 ->withInput();
         }
         return redirect()->to(url_to($this->indexController))

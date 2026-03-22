@@ -8,12 +8,9 @@
 </div>
 <div>
     <label for="published">Published</label>
-    <?php echo form_checkbox([
-        "name" => "published",
-        "id" => "published",
-        "value" => "1",
-        "checked" => $post->published
-    ]); ?>
+    <input type="hidden" name="published" value="0">
+    <input type="checkbox" name="published" id="published" value="1" <?php echo old("published", $post->published) === "1" ? "checked" : ""; ?>>
+
 </div>
 <div>
     <button>Save</button>

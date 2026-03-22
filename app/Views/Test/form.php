@@ -9,7 +9,14 @@
 <div>
     <label for="published">Published</label>
     <input type="hidden" name="published" value="0">
-    <input type="checkbox" name="published" id="published" value="1" <?php echo old("published", $object->published) === "1" ? "checked" : ""; ?>></div>
+    <?php echo form_checkbox([
+        "name" => "published",
+        "id" => "published",
+        "value" => "1",
+        "checked" => old("published", $object->published) === "1" ? true : false 
+    ]); ?>
+</div>
+    
 <div>
     <button>Save</button>
 </div>

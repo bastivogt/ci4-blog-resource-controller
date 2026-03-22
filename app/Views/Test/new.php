@@ -17,7 +17,7 @@
         </ul>
     <?php endif; ?>
 
-    <?php echo form_open(url_to("TestController::create")); ?>
+    <?php echo form_open(url_to("TestController::store")); ?>
         <?php echo $this->include("Test/form"); ?>
     <?php echo form_close(); ?>
     <hr>

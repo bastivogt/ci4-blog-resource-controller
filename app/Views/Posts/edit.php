@@ -29,3 +29,28 @@
 <?php echo $this->endSection(); ?>
 
 
+<?php echo $this->section("custom_js"); ?>
+    <script>
+        const cb = document.getElementById("published");
+        cb.addEventListener("change", (e) => {
+            if(e.target.getAttribute("checked") === "") {
+                e.target.removeAttribute("checked");
+            }else {
+                e.target.setAttribute("checked", "");
+            }
+            console.log(e.target.value);
+
+        });
+
+        const form = document.querySelector("form");
+        console.log("form");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            // console.log("submit");
+            // console.log("cb value", cb.value)
+            e.target.submit();
+        });
+    </script>
+<?php echo $this->endSection(); ?>
+
+

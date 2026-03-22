@@ -50,7 +50,7 @@ class PostsController extends BaseController
         ]);
     }
 
-    public function create() {
+    public function store() {
         $post = new PostEntity($this->request->getPost());
         //dd($post);
         $id = $this->postModel->insert($post);

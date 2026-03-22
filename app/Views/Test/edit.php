@@ -29,7 +29,7 @@
 <?php echo $this->endSection(); ?>
 
 
-    <?php echo $this->section("custom_js"); ?>
+<?php echo $this->section("custom_js"); ?>
     <script>
         const cb = document.getElementById("published");
         cb.addEventListener("change", (e) => {
