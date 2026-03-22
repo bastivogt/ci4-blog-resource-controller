@@ -25,11 +25,11 @@ class TestController extends CRUDController
     ];
 
     protected function getObjects() {
-        return $this->model->where("published", true)->findAll();
+        return $this->model->orderBy("created_at", "desc")->findAll();
     }
 
     protected function getObject($id) {
-        return $this->model->where("published", true)->find($id);
+        return $this->model->find($id);
     }
 
 }

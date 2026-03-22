@@ -12,7 +12,7 @@
         "name" => "published",
         "id" => "published",
         "value" => "1",
-        "checked" => boolval($post->published)
+        "checked" => $post->published
     ]); ?>
 </div>
 <div>

@@ -108,6 +108,7 @@ class CRUDController extends BaseController
     public function update($id)
     {
         $object = $this->getObjectOr404($id);
+        //dd($this->request->getPost());
         $object->fill($this->request->getPost());
 
         if(! $object->hasChanged()) {
