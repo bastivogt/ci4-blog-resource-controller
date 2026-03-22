@@ -8,8 +8,10 @@
 </div>
 <div>
     <label for="published">Published</label>
-    <input type="checkbox" name="published" id="published" value="1" <?php echo old("published", old("published", $object->published)) ? "checked" : ""; ?>>
-</div>
+    <input type="hidden" name="published" value="0">
+    <input type="checkbox" name="published" id="published" value="1" <?php echo old("published", $object->published) === "1" ? "checked" : ""; ?>></div>
 <div>
     <button>Save</button>
 </div>
+
+

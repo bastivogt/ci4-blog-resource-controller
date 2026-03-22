@@ -27,7 +27,7 @@ class PostModel extends Model
 
     protected array $casts = [
         "id" => "int",
-        "published" => "bool",
+        //"published" => "bool",
         
     ];
     protected array $castHandlers = [];
